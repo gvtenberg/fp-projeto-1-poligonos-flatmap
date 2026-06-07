@@ -10,7 +10,7 @@ import java.awt.geom.Point2D;
  * @param x        coordenada horizontal
  * @param y        coordenada vertical
  * @param distance distância de um ponto anterior.
- *                 Informe 0 se não for calcular ou não existir um ponto anterior ou use o construtor {@link #Point(double, double)}.
+ *                 Informe 0 se não for calcular ou não existir um ponto anterior, ou use o construtor {@link #Point(double, double)}.
  * @author Manoel Campos
  */
 public record Point(double x, double y, double distance) {
@@ -27,7 +27,7 @@ public record Point(double x, double y, double distance) {
     /**
      * Cria um ponto com as mesmas coordenadas de um ponto p2 passado por parâmetro,
      * calculando e armazenando a soma da distância do ponto p1 para um ponto anterior,
-     * com a a distância do p2 para o p1.
+     * com a distância do p2 para o p1.
      * Assim, chamando este construtor consecutivamente para cada par de pontos
      * de um polígono, obtemos o último ponto contendo o perímetro do polígono no campo
      * {@link #distance}.

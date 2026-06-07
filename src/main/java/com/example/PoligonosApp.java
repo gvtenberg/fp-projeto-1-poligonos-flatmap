@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 /// Uma aplicação desktop (usando a biblioteca [OpenJFX (JavaFX)](http://openjfx.io))
 /// que desenha polígonos na tela e calcula o perímetro de cada um:
@@ -126,8 +127,15 @@ public class PoligonosApp extends Application {
     /// @return uma lista de String indicando se o polígono é um "quadrilátero" (quadrado ou retângulo),
     /// "triângulo", "pentágono", "hexágono" ou apenas um "polígono" geral quando tiver mais de 6 lados.
     protected List<String> tipoPoligonos(){
-        // TODO Apague esta linha e a próxima e implemente seu código
-        return List.of();
+        return pontosPoligonos.stream()
+                              .flatMap(listaTipos -> Stream.of(listaTipos.size()))
+                              .map(qtdLados -> switch (qtdLados) {
+                                  case 3 -> "Triângulo";
+                                  case 4 -> "Quadrilátero";
+                                  case 5 -> "Pentágono";
+                                  case 6 -> "Hexágono";
+                                  default -> "Polígono";
+                              }).toList();
     }
 
     /// Calcula o perímetro de cada polígono.
