@@ -184,6 +184,7 @@ public class PoligonosApp extends Application {
                                   final var pontoInicial = listaPontos.getLast();
                                   final var pontoFinal = listaPontos.stream()
                                           .reduce(pontoInicial, Point::new);
+
                                   return Stream.of(pontoFinal.distance());
                               })
                               .toList();
