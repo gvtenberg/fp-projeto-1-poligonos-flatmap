@@ -129,13 +129,17 @@ public class PoligonosApp extends Application {
     protected List<String> tipoPoligonos(){
         return pontosPoligonos.stream()
                               .flatMap(listaTipos -> Stream.of(listaTipos.size()))
-                              .map(qtdLados -> switch (qtdLados) {
-                                  case 3 -> "Triângulo";
-                                  case 4 -> "Quadrilátero";
-                                  case 5 -> "Pentágono";
-                                  case 6 -> "Hexágono";
-                                  default -> "Polígono";
-                              }).toList();
+                              .map(PoligonosApp::tipoPoligono).toList();
+    }
+
+    private static String tipoPoligono(Integer qtdLados) {
+        return switch (qtdLados) {
+            case 3 -> "Triângulo";
+            case 4 -> "Quadrilátero";
+            case 5 -> "Pentágono";
+            case 6 -> "Hexágono";
+            default -> "Polígono";
+        };
     }
 
     /// Calcula o perímetro de cada polígono.
